@@ -541,19 +541,48 @@ footer {
 /* ── MOBILE ── */
 @media(max-width:768px){
   #nav { padding:14px 20px; }
-  #hero-title { left:24px; bottom:40px; }
+  .nav-right { display:none; }
+
+  #hero-title { left:24px; right:24px; bottom:40px; }
   .scroll-cue { right:24px; }
+
   .detail-section,.stage,.artist-grid { grid-template-columns:1fr; }
   .detail-section.flip,.stage.flip { direction:ltr; }
-  .detail-img,.stage-img { height:58vw; }
-  .artist-img { height:60vw; }
+  .detail-img,.stage-img { height:64vw; min-height:220px; }
+  .artist-img { height:60vw; min-height:220px; }
   .artist-img::after { background:linear-gradient(to bottom,transparent 55%,var(--ink)); }
   .detail-text,.stage-text,.artist-text { padding:48px 24px; }
+
   .pi-inner,.mi-inner,.journey-inner,.oof-inner { padding:0 24px; }
   #painting-intro,#making-intro { padding:80px 0 60px; }
+
+  /* pull quote — rein in the large decorative mark */
   .pull-quote { padding:72px 24px; }
-  .hi-text { left:24px; bottom:32px; }
+  .pull-quote blockquote::before { font-size:72px; top:-20px; left:-4px; }
+
+  /* hands interlude — constrain text so it can't overflow right edge */
+  .hi-text { left:20px; right:20px; bottom:28px; max-width:none; }
+
+  /* provenance table — drop the 3rd column (location) on small screens */
+  .prov-row { grid-template-columns:60px 1fr; gap:16px; }
+  .prov-loc { display:none; }
+
+  /* pigment labels — too cramped on mobile, hide them */
+  .pig-labels { display:none; }
+
   #close { padding:100px 24px; }
   footer { flex-direction:column; gap:10px; text-align:center; }
   .footer-right { text-align:center; }
+}
+
+/* ── SMALL PHONES (iPhone SE, Galaxy A, etc.) ── */
+@media(max-width:480px){
+  .detail-img,.stage-img { height:76vw; }
+  .artist-img { height:78vw; }
+  .hi-img-wrap img { height:52vh; }
+  .detail-text,.stage-text,.artist-text { padding:36px 20px; }
+  .pi-inner,.mi-inner,.journey-inner,.oof-inner { padding:0 20px; }
+  .stage-num { font-size:60px; }
+  #journey { padding:72px 0; }
+  #close { padding:80px 20px; }
 }
