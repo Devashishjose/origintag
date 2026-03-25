@@ -195,7 +195,7 @@ body {
 
 /* ── SECTION CHROME ── */
 .eyebrow {
-  font-size:10px; letter-spacing:0.26em;
+  font-size:12px; letter-spacing:0.22em;
   text-transform:uppercase; color:var(--terra);
   display:block; margin-bottom:20px;
 }
@@ -274,8 +274,8 @@ body {
 }
 .detail-text.light h3 { color:var(--ink); }
 .detail-text p {
-  font-size:17px; line-height:1.85;
-  color:rgba(245,240,232,0.5);
+  font-size:19px; line-height:1.85;
+  color:rgba(245,240,232,0.55);
 }
 .detail-text.light p { color:rgba(15,14,13,0.55); }
 
@@ -294,7 +294,7 @@ body {
 }
 .mi-inner h2 em { font-style:italic; color:var(--terra); }
 .mi-inner p {
-  font-size:17px; line-height:1.9;
+  font-size:19px; line-height:1.9;
   color:rgba(15,14,13,0.5);
 }
 
@@ -325,10 +325,10 @@ body {
 .stage-num {
   font-family:'Cormorant Garamond',serif;
   font-size:80px; font-weight:200;
-  color:rgba(245,240,232,0.06);
+  color:rgba(245,240,232,0.15);
   line-height:1; margin-bottom:-16px;
 }
-.stage-text.light .stage-num { color:rgba(15,14,13,0.05); }
+.stage-text.light .stage-num { color:rgba(15,14,13,0.12); }
 .stage-title {
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(24px,2.8vw,36px);
@@ -337,8 +337,8 @@ body {
 }
 .stage-text.light .stage-title { color:var(--ink); }
 .stage-body {
-  font-size:16px; line-height:1.9;
-  color:rgba(245,240,232,0.48);
+  font-size:18px; line-height:1.85;
+  color:rgba(245,240,232,0.52);
 }
 .stage-text.light .stage-body { color:rgba(15,14,13,0.52); }
 .stage-hours {
@@ -366,10 +366,11 @@ body {
 }
 .hi-text p {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(18px,2.5vw,28px);
-  font-style:italic; font-weight:200;
-  color:rgba(245,240,232,0.65);
+  font-size:clamp(20px,2.8vw,32px);
+  font-style:italic; font-weight:300;
+  color:rgba(245,240,232,0.95);
   line-height:1.55;
+  text-shadow: 0 2px 24px rgba(15,14,13,0.9), 0 0 80px rgba(15,14,13,0.7);
 }
 
 /* ── ARTIST ── */
@@ -405,8 +406,8 @@ body {
   color:var(--terra); margin-bottom:36px;
 }
 .artist-bio {
-  font-size:17px; line-height:1.95;
-  color:rgba(245,240,232,0.48);
+  font-size:19px; line-height:1.95;
+  color:rgba(245,240,232,0.52);
   max-width:480px; margin-bottom:48px;
 }
 .lineage { border-top:1px solid var(--divider-dark); }
@@ -581,7 +582,9 @@ footer {
   #nav { padding:14px 20px; }
   .nav-right { display:none; }
 
-  #hero-title { left:24px; right:24px; bottom:40px; }
+  #hero { height:68vh; }
+  #hero-img { object-fit:contain; object-position:center center; height:100%; }
+  #hero-title { left:24px; right:24px; bottom:28px; }
   .scroll-cue { right:24px; }
 
   .pi-blocks { grid-template-columns:1fr; gap:36px; padding:48px 24px 0; }
