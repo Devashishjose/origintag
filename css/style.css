@@ -459,50 +459,6 @@ body {
 .pull-attr { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
 
 
-/* ── PIGMENTS — mobile base ── */
-#pigments { position:relative; }
-.pig-intro {
-  background:var(--ink);
-  padding:80px 24px 60px;
-  text-align:center;
-}
-.pig-intro-inner { max-width:760px; margin:0 auto; }
-.pig-intro h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(26px,6vw,52px);
-  font-weight:200; line-height:1.2;
-  margin-bottom:24px;
-}
-.pig-intro p {
-  font-size:18px; line-height:1.9;
-  color:rgba(245,240,232,0.45);
-}
-.pigments-img-wrap { overflow:hidden; position:relative; height:56vh; }
-.pigments-img-wrap img { width:100%; height:115%; object-fit:cover; display:block; will-change:transform; }
-.pig-overlay { position:absolute; inset:0; background:rgba(15,14,13,.32); }
-.pig-labels { display:none; /* hidden on mobile */ }
-.pig-label {
-  position:absolute;
-  font-size:10px; letter-spacing:.18em;
-  text-transform:uppercase; color:rgba(245,240,232,.72);
-  white-space:nowrap;
-}
-.pig-label::before { content:'—'; margin-right:6px; color:var(--gold); }
-
-
-/* ── STUDIO — mobile base ── */
-#studio { background:var(--ink); }
-.studio-img-wrap { overflow:hidden; height:52vh; }
-.studio-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
-.studio-caption { max-width:600px; margin:0 auto; padding:56px 24px; text-align:center; }
-.studio-caption p {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(16px,4vw,22px);
-  font-style:italic; font-weight:200;
-  line-height:1.7; color:rgba(245,240,232,.42);
-}
-
-
 /* ── JOURNEY (provenance) — mobile base ── */
 #journey { background:var(--warm); color:var(--ink); padding:72px 0; }
 .journey-inner { max-width:840px; margin:0 auto; padding:0 20px; }
@@ -672,15 +628,6 @@ footer {
   /* Pull quote */
   .pull-quote { padding:100px 48px; }
   .pull-quote blockquote::before { font-size:110px; top:-40px; left:-16px; }
-
-  /* Pigments */
-  .pig-intro { padding:100px 48px 72px; }
-  .pigments-img-wrap { height:70vh; }
-  .pig-labels { display:block; }
-
-  /* Studio */
-  .studio-img-wrap { height:65vh; }
-  .studio-caption { padding:72px 48px; }
 
   /* Journey */
   #journey { padding:100px 0; }
