@@ -448,11 +448,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .artist-img-wrap {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  max-height: 90vw; /* prevent it going too tall on wide phones */
 }
 .artist-img-wrap img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%; /* keeps face + upper body in frame */
 }
 .artist-story {
   padding: 44px 24px 0;
@@ -818,7 +822,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     min-height: 70vh;
   }
   .artist-img-wrap {
-    /* natural height — full image, no crop */
+    aspect-ratio: unset;
+    height: 80vh;
+    min-height: 560px;
   }
   .artist-story { padding: 80px 72px; }
   .artist-story p { font-size: 18px; }
