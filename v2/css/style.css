@@ -771,6 +771,156 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   line-height: 1.6;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   VIDEO SECTION — Feature 2
+   ───────────────────────────────────────────────────────────── */
+#video-section {
+  background: var(--ink);
+  padding: 72px 24px 80px;
+  border-top: 1px solid rgba(245,240,232,0.06);
+}
+.video-text {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.video-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 4.5vw, 26px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.5;
+}
+.video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #0a0908;
+}
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PIECE ID CARD — Feature 3
+   ───────────────────────────────────────────────────────────── */
+.piece-id-card {
+  background: #1A1814;
+  border: 1px solid rgba(184, 144, 42, 0.3);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+.piece-id-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.piece-id-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.piece-id-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(59, 109, 17, 0.2);
+  border: 1px solid rgba(59, 109, 17, 0.4);
+  border-radius: 20px;
+  padding: 3px 10px 3px 8px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 300;
+  color: #72b83a;
+}
+.piece-id-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #72b83a;
+  flex-shrink: 0;
+}
+.piece-id-number {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.piece-id-note {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(245,240,232,0.38);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WHATSAPP SHARE — Feature 4
+   ───────────────────────────────────────────────────────────── */
+#whatsapp-share {
+  background: var(--ink);
+  padding: 52px 24px 56px;
+  text-align: center;
+  border-top: 1px solid rgba(245,240,232,0.06);
+}
+.share-prompt {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(245,240,232,0.4);
+  margin-bottom: 24px;
+}
+.share-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  border-radius: 8px;
+  padding: 14px 24px;
+  width: 100%;
+  max-width: 360px;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.whatsapp-btn:hover  { opacity: 0.88; }
+.whatsapp-btn:active { transform: scale(0.97); opacity: 0.8; }
+.share-hint {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.22);
+  line-height: 1.6;
+  max-width: 300px;
+}
+
 /* ═════════════════════════════════════════════════════════════
    BREAKPOINT — TABLET (min-width: 640px)
    ═════════════════════════════════════════════════════════════ */
@@ -798,6 +948,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .pigments-text { padding: 44px 48px 0; }
 
   #close { padding: 96px 48px; }
+  #video-section { padding: 80px 48px 88px; }
+  #whatsapp-share { padding: 60px 48px 64px; }
   #provenance { padding: 96px 0; }
   .prov-header { padding: 0 48px; }
   .prov-note { padding: 0 48px; }
@@ -893,6 +1045,12 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   /* Close */
   #close { padding: 120px 80px; }
   .close-inner { max-width: 560px; }
+
+  /* Video */
+  #video-section { padding: 96px 80px 104px; }
+
+  /* WhatsApp */
+  #whatsapp-share { padding: 72px 80px 80px; }
 
   /* Provenance */
   #provenance { padding: 120px 0; }
