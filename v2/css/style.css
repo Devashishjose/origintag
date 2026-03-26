@@ -170,8 +170,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 #hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom; /* painting flush with bottom → title sits on painting */
+  object-fit: cover;
+  object-position: center center;
 }
 #hero-overlay {
   position: absolute;
@@ -457,7 +457,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
    ───────────────────────────────────────────────────────────── */
 #artist {
   background: var(--ink);
-  padding-bottom: 80px;
+  padding-bottom: 44px; /* Note 3 — reduce gap before lineage */
 }
 .artist-layout {
   display: flex;
@@ -534,7 +534,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
    ───────────────────────────────────────────────────────────── */
 #lineage {
   background: var(--ink);
-  padding: 80px 24px;
+  padding: 44px 24px 80px; /* Note 3 — tighter top, generous bottom */
 }
 .lineage-inner h2 {
   font-family: var(--serif);
@@ -641,11 +641,24 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   THE CLOSE — completely different feel
+   THE CLOSE — two zones: dark auth → cream price
    ───────────────────────────────────────────────────────────── */
-#close {
+#close { padding: 0; }
+
+.close-dark {
+  background: var(--ink);
+  padding: 72px 24px 56px;
+  border-top: 1px solid rgba(245,240,232,0.06);
+}
+/* close-label sits in the dark zone — needs cream colour */
+.close-dark .close-label {
+  color: rgba(245,240,232,0.3);
+  margin-top: 36px;
+}
+
+.close-cream {
   background: var(--warm);
-  padding: 80px 24px;
+  padding: 60px 24px 80px;
 }
 .close-inner { max-width: 480px; }
 .close-label {
@@ -861,12 +874,30 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   letter-spacing: 0.06em;
   margin-bottom: 10px;
 }
+.piece-id-meta {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(245,240,232,0.32);
+  margin-bottom: 14px;
+}
 .piece-id-note {
   font-family: var(--sans);
   font-size: 12px;
   font-weight: 300;
   line-height: 1.65;
   color: rgba(245,240,232,0.38);
+}
+
+/* Verified badge pulse — fires once after typewriter completes */
+@keyframes verified-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(114,184,58,0.55); }
+  65%  { box-shadow: 0 0 0 10px rgba(114,184,58,0); }
+  100% { box-shadow: 0 0 0 0 rgba(114,184,58,0); }
+}
+.piece-id-badge.pulse {
+  animation: verified-pulse 0.9s ease-out forwards;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -947,7 +978,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   #pigments { padding-bottom: 96px; }
   .pigments-text { padding: 44px 48px 0; }
 
-  #close { padding: 96px 48px; }
+  .close-dark  { padding: 88px 48px 64px; }
+  .close-cream { padding: 72px 48px 96px; }
   #video-section { padding: 80px 48px 88px; }
   #whatsapp-share { padding: 60px 48px 64px; }
   #provenance { padding: 96px 0; }
@@ -1043,7 +1075,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .pigments-text p { font-size: 17px; }
 
   /* Close */
-  #close { padding: 120px 80px; }
+  .close-dark  { padding: 104px 80px 80px; }
+  .close-cream { padding: 80px 80px 120px; }
   .close-inner { max-width: 560px; }
 
   /* Video */

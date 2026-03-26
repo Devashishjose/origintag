@@ -123,6 +123,65 @@ function initCarouselDots(carouselId, dotsId, revealCaptions) {
 initCarouselDots('detail-carousel', 'detail-dots', true);   /* captions ON */
 initCarouselDots('making-carousel', 'making-dots', false);  /* captions OFF */
 
+/* ─── PIECE ID CARD — typewriter + verified pulse ───────────
+   1. Card fades up via scroll reveal (.r → .on)
+   2. 400ms later: ID number types out at 65ms/char
+   3. After last char: Verified badge fades in + pulses once
+   4. 400ms later: supporting note fades in
+   ─────────────────────────────────────────────────────────── */
+const pieceIdCard   = document.querySelector('.piece-id-card');
+const pieceIdNumber = document.querySelector('.piece-id-number');
+const pieceIdBadge  = document.querySelector('.piece-id-badge');
+const pieceIdNote   = document.querySelector('.piece-id-note');
+
+if (pieceIdCard && pieceIdNumber) {
+  const fullText   = 'PAC — 2024 — 007';
+  let cardAnimated = false;
+
+  /* hide until typewriter fires */
+  pieceIdNumber.textContent    = '';
+  if (pieceIdBadge) pieceIdBadge.style.opacity = '0';
+  if (pieceIdNote)  pieceIdNote.style.opacity  = '0';
+
+  const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !cardAnimated) {
+        cardAnimated = true;
+        cardObserver.unobserve(e.target);
+
+        /* wait for card fade-in, then type */
+        setTimeout(() => {
+          let i = 0;
+          const type = setInterval(() => {
+            pieceIdNumber.textContent = fullText.slice(0, i + 1);
+            i++;
+            if (i >= fullText.length) {
+              clearInterval(type);
+              /* badge: fade in + pulse */
+              setTimeout(() => {
+                if (pieceIdBadge) {
+                  pieceIdBadge.style.transition = 'opacity 0.4s ease';
+                  pieceIdBadge.style.opacity    = '1';
+                  setTimeout(() => pieceIdBadge.classList.add('pulse'), 80);
+                }
+                /* note: fade in after badge */
+                setTimeout(() => {
+                  if (pieceIdNote) {
+                    pieceIdNote.style.transition = 'opacity 0.6s ease';
+                    pieceIdNote.style.opacity    = '1';
+                  }
+                }, 400);
+              }, 150);
+            }
+          }, 65);
+        }, 400);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  cardObserver.observe(pieceIdCard);
+}
+
 /* ─── PRICE — day-by-day build (Change 7) ───────────────────
    Day 1 (₹850) → Day 21 (₹17,850) at 80ms per day.
    After final day, calc line ("21 days × ₹850") fades in.
