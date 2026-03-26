@@ -276,14 +276,16 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   padding: 18px 0 10px;
 }
 .dot {
-  width: 5px; height: 5px;
+  width: 6px; height: 6px;
   border-radius: 50%;
-  background: rgba(245,240,232,0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
+  background: transparent;
+  border: 1.5px solid rgba(245,240,232,0.28);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 .dot.active {
   background: var(--terra);
-  transform: scale(1.25);
+  border-color: var(--terra);
+  transform: scale(1.15);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -392,20 +394,26 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .esc-line:last-child { margin-bottom: 0; }
 .esc-line.on { opacity: 1; transform: none; }
 
-/* Three lines — different sizes for rhythm */
-.esc-line:nth-child(1) {
-  font-size: clamp(22px, 5.5vw, 44px);
-  color: var(--cream);
-}
+/* Five lines — lines 1, 2, 4, 5 standard; line 3 is the peak */
+.esc-line:nth-child(1),
 .esc-line:nth-child(2) {
+  font-size: clamp(20px, 5vw, 40px);
+  color: rgba(245,240,232,0.75);
+}
+.esc-line:nth-child(3) {
   font-size: clamp(30px, 8vw, 64px);
   color: var(--gold);
   font-style: italic;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  transition-duration: 1.5s; /* arrives slower */
 }
-.esc-line:nth-child(3) {
+.esc-line:nth-child(4) {
+  font-size: clamp(20px, 5vw, 40px);
+  color: var(--cream);
+}
+.esc-line:nth-child(5) {
   font-size: clamp(16px, 4vw, 30px);
-  color: rgba(245,240,232,0.48);
+  color: rgba(245,240,232,0.45);
   font-style: italic;
 }
 

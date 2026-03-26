@@ -2,20 +2,18 @@
    OriginTag V2 — main.js
    ───────────────────────────────────────────────────────────── */
 
-const intro   = document.getElementById('intro');
-const nav     = document.getElementById('nav');
-const hero    = document.getElementById('hero');
+const intro       = document.getElementById('intro');
+const nav         = document.getElementById('nav');
+const hero        = document.getElementById('hero');
 const heroContent = document.getElementById('hero-content');
-const lines   = document.querySelectorAll('.intro-line');
+const lines       = document.querySelectorAll('.intro-line');
 
-/* ─── INTRO ANIMATION ────────────────────────────────────────
-   Each line fades in, holds, fades out before the next.
-   Line 1: 0.6s – 2.4s
-   Line 2: 3.0s – 4.8s
-   Line 3: 5.4s – 7.2s
-   Hero reveal: 7.8s
+/* ─── INTRO — no skip, plays in full every time ──────────────
+   Line 1: 0.6s → 2.4s
+   Line 2: 3.0s → 4.8s
+   Line 3: 5.4s → 7.2s
+   Hero reveal: 7.8s   |   Intro removed: 9.0s
    Hero content: 9.6s
-   Intro removed: 9.0s
    ─────────────────────────────────────────────────────────── */
 function showLine(index, showAt, hideAt) {
   setTimeout(() => lines[index].classList.add('visible'),    showAt);
@@ -39,30 +37,6 @@ setTimeout(() => {
   if (heroContent) heroContent.classList.add('show');
 }, 9600);
 
-/* ─── SKIP INTRO ────────────────────────────────────────────── */
-let introDone = false;
-
-function skipIntro() {
-  if (introDone) return;
-  introDone = true;
-  lines.forEach(l => { l.style.transition = 'none'; l.style.opacity = '0'; });
-  setTimeout(() => {
-    hero.classList.add('open');
-    nav.classList.add('show');
-  }, 200);
-  setTimeout(() => {
-    if (intro && intro.parentNode) intro.remove();
-    if (heroContent) heroContent.classList.add('show');
-  }, 1000);
-}
-
-if (intro) {
-  intro.addEventListener('click', skipIntro);
-  document.addEventListener('keydown', e => {
-    if ((e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') && intro.parentNode) skipIntro();
-  }, { once: true });
-}
-
 /* ─── SCROLL REVEAL ─────────────────────────────────────────── */
 const scrollObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -75,7 +49,10 @@ const scrollObserver = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.r').forEach(el => scrollObserver.observe(el));
 
-/* ─── ESCALATION — staggered line reveal ────────────────────── */
+/* ─── ESCALATION — five lines, staggered 0.4s apart ─────────
+   Line 3 ("It will outlast all of them.") arrives with a
+   slightly longer pause (900ms) for weight.
+   ─────────────────────────────────────────────────────────── */
 const escSection = document.getElementById('escalation');
 const escLines   = document.querySelectorAll('.esc-line');
 
@@ -90,7 +67,7 @@ if (escSection) {
         escObserver.unobserve(e.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   escObserver.observe(escSection);
 }
 
@@ -125,3 +102,47 @@ function initCarouselDots(carouselId, dotsId) {
 
 initCarouselDots('detail-carousel', 'detail-dots');
 initCarouselDots('making-carousel', 'making-dots');
+
+/* ─── PRICE COUNT-UP ────────────────────────────────────────
+   Fires once when ₹17,850 scrolls into view.
+   Counts from 0 over 1.5s with an ease-out curve —
+   deliberate and slow, not gimmicky.
+   ─────────────────────────────────────────────────────────── */
+const closePriceEl = document.querySelector('.close-price');
+let priceAnimated  = false;
+
+if (closePriceEl) {
+  const priceObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !priceAnimated) {
+        priceAnimated = true;
+        priceObserver.unobserve(e.target);
+
+        const target   = 17850;
+        const duration = 1500;
+        const start    = performance.now();
+
+        function tick(now) {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          /* ease-out quad — quick start, slows as it lands */
+          const eased    = 1 - Math.pow(1 - progress, 2);
+          const current  = Math.round(eased * target);
+
+          /* Indian number formatting: ₹17,850 */
+          closePriceEl.textContent = '₹' + current.toLocaleString('en-IN');
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            closePriceEl.textContent = '₹17,850';
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  priceObserver.observe(closePriceEl);
+}
