@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Certificate of Provenance — Udaipur ki Shaam by Jitendra Yadav. Authenticated by Pacific Art, Udaipur.">
+  <title>Certificate of Provenance — Udaipur ki Shaam · OT · 2024 · 007</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── VARIABLES — matches OriginTag v2 ───────────────────── */
+    :root {
+      --ink:   #0F0E0D;
+      --cream: #F5F0E8;
+      --warm:  #FAF7F2;
+      --gold:  #B8902A;
+      --terra: #C4622D;
+      --serif: 'Cormorant Garamond', serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── BACK LINK ──────────────────────────────────────────── */
+    .back-link {
+      display: block;
+      background: var(--ink);
+      padding: 14px 24px;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,240,232,0.06);
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(245,240,232,0.65); }
+    .back-link::before { content: '← '; }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .cert-header {
+      background: var(--ink);
+      padding: 44px 28px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(184,144,42,0.25);
+      position: relative;
+    }
+    .cert-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 1px;
+      background: var(--gold);
+    }
+    .cert-meta {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .cert-title {
+      font-family: var(--serif);
+      font-size: clamp(24px, 7vw, 40px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .cert-subtitle {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.45);
+    }
+    .ornament {
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      font-size: 9px;
+      margin: 18px 0 0;
+      opacity: 0.7;
+    }
+
+    /* ── BODY ───────────────────────────────────────────────── */
+    .cert-body {
+      background: var(--cream);
+      padding: 44px 28px 0;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .certifies-that {
+      font-size: 9.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .buyer-name {
+      font-family: var(--serif);
+      font-size: clamp(34px, 9vw, 58px);
+      font-weight: 300;
+      font-style: italic;
+      text-align: center;
+      color: var(--ink);
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+    .owner-line {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(15,14,13,0.45);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .divider {
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      font-size: 9px;
+      margin: 28px 0;
+      opacity: 0.7;
+    }
+
+    /* ── PAINTING CARD ──────────────────────────────────────── */
+    .painting-card {
+      border-left: 3px solid var(--terra);
+      background: rgba(15,14,13,0.035);
+      padding: 22px 22px 0 24px;
+      margin-bottom: 32px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 10px;
+    }
+    .card-tags span {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      font-weight: 300;
+    }
+    .card-tags span + span::before {
+      content: ' · ';
+      color: rgba(196,98,45,0.4);
+      margin: 0 6px;
+    }
+    .painting-name {
+      font-family: var(--serif);
+      font-size: clamp(28px, 7vw, 38px);
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+    .painting-name em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    /* ── STATS GRID ─────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(15,14,13,0.08);
+      border-left: 1px solid rgba(15,14,13,0.08);
+      margin: 20px -22px 0 -24px;
+    }
+    .stat-cell {
+      padding: 16px 14px;
+      border-right: 1px solid rgba(15,14,13,0.08);
+      border-bottom: 1px solid rgba(15,14,13,0.08);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--ink);
+      display: block;
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.4);
+      display: block;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+
+    /* ── ARTIST + STUDIO ────────────────────────────────────── */
+    .artist-studio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(15,14,13,0.08);
+      margin-bottom: 32px;
+    }
+    .info-cell {
+      padding: 18px 16px;
+    }
+    .info-cell + .info-cell {
+      border-left: 1px solid rgba(15,14,13,0.08);
+    }
+    .info-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .info-name {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .info-note {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(15,14,13,0.45);
+      line-height: 1.55;
+    }
+
+    /* ── LINEAGE ────────────────────────────────────────────── */
+    .lineage-section { margin-bottom: 32px; }
+    .section-eyebrow {
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      display: block;
+      margin-bottom: 18px;
+    }
+    .lineage-chain {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(15,14,13,0.08);
+    }
+    .lineage-gen {
+      padding: 14px 12px;
+      border-right: 1px solid rgba(15,14,13,0.08);
+      text-align: center;
+    }
+    .lineage-gen:last-child {
+      border-right: none;
+      background: rgba(15,14,13,0.03);
+    }
+    .gen-num {
+      font-size: 8.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 7px;
+    }
+    .gen-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .gen-note {
+      font-size: 9.5px;
+      font-style: italic;
+      color: rgba(15,14,13,0.4);
+      line-height: 1.4;
+    }
+
+    /* ── MATERIALS ──────────────────────────────────────────── */
+    .materials-section { margin-bottom: 36px; }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pill {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(15,14,13,0.18);
+      padding: 5px 13px;
+      color: rgba(15,14,13,0.65);
+    }
+
+    /* ── QUOTE ──────────────────────────────────────────────── */
+    .cert-quote {
+      background: rgba(15,14,13,0.035);
+      border-top: 1px solid rgba(15,14,13,0.08);
+      border-bottom: 1px solid rgba(15,14,13,0.08);
+      padding: 30px 28px;
+      margin: 0 -28px 36px;
+      text-align: center;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 40px;
+      color: var(--gold);
+      line-height: 0.5;
+      display: block;
+      margin-bottom: 18px;
+      opacity: 0.7;
+    }
+    .cert-quote blockquote {
+      font-family: var(--serif);
+      font-size: clamp(14px, 3.8vw, 17px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+    .quote-attr {
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-top: 18px;
+      display: block;
+    }
+
+    /* ── CERT BOTTOM (QR + SEAL + DETAILS) ──────────────────── */
+    .cert-bottom {
+      border-top: 1px solid rgba(15,14,13,0.1);
+      padding: 30px 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 24px;
+      align-items: start;
+    }
+    .cert-seal-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+    }
+    .cert-qr { text-align: center; }
+    .cert-qr img {
+      width: 96px;
+      height: 96px;
+      display: block;
+      margin: 0 auto 8px;
+    }
+    .qr-label {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.35);
+      line-height: 1.5;
+    }
+    .cert-details { text-align: right; }
+    .detail-row { margin-bottom: 14px; }
+    .detail-label {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .detail-value {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+      display: block;
+    }
+    .detail-sub {
+      font-size: 10px;
+      color: rgba(15,14,13,0.38);
+      display: block;
+    }
+    .cert-number-typed {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+    .detail-price {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--ink);
+      display: block;
+    }
+
+    /* ── SEAL SVG ───────────────────────────────────────────── */
+    .seal-svg { width: 88px; height: 88px; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .cert-footer {
+      background: var(--ink);
+      padding: 40px 28px 36px;
+      border-top: 1px solid rgba(184,144,42,0.2);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .footer-prompt {
+      font-family: var(--serif);
+      font-size: clamp(16px, 4.5vw, 20px);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.65);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .share-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+      border: none;
+      width: 100%;
+    }
+    .share-btn:hover { opacity: 0.78; }
+    .share-wa  { background: #25D366; color: white; }
+    .share-copy  { background: transparent; border: 1px solid rgba(245,240,232,0.18); color: rgba(245,240,232,0.6); }
+    .share-print { background: transparent; border: 1px solid rgba(245,240,232,0.18); color: rgba(245,240,232,0.6); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245,240,232,0.07);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-hashtag {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .footer-insta {
+      font-size: 10.5px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(245,240,232,0.3);
+      text-decoration: none;
+    }
+    .footer-insta:hover { color: rgba(245,240,232,0.6); }
+    .footer-tagline {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.18);
+      border-top: 1px solid rgba(245,240,232,0.06);
+      padding-top: 16px;
+    }
+
+    /* ── TABLET ─────────────────────────────────────────────── */
+    @media (min-width: 580px) {
+      .cert-body { padding: 52px 48px 0; }
+      .cert-footer { padding: 48px 48px 40px; }
+      .cert-quote { margin: 0 -48px 40px; padding: 36px 48px; }
+      .cert-bottom {
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto;
+        align-items: center;
+      }
+      .cert-seal-wrap {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      .cert-details { text-align: right; }
+      .share-row { flex-direction: row; justify-content: center; }
+      .share-btn { width: auto; min-width: 168px; }
+    }
+
+    /* ── PRINT ──────────────────────────────────────────────── */
+    @media print {
+      .back-link { display: none; }
+      .share-row { display: none; }
+      .cert-footer-print-note { display: block !important; }
+      body { background: white; }
+      .cert-footer { background: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cert-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    .cert-footer-print-note { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- BACK TO STORY -->
+<a class="back-link" href="https://devashishjose.github.io/origintag/v2/">Read the full story of this painting</a>
+
+<!-- ── DARK HEADER ──────────────────────────────────────────── -->
+<header class="cert-header">
+  <p class="cert-meta">OriginTag &nbsp;·&nbsp; Pacific Art &nbsp;·&nbsp; Udaipur</p>
+  <h1 class="cert-title">Certificate of Provenance</h1>
+  <p class="cert-subtitle">Authenticated Record of Ownership &amp; Craft</p>
+  <p class="ornament">◇ &thinsp; ◆ &thinsp; ◇</p>
+</header>
+
+<!-- ── CERT BODY ────────────────────────────────────────────── -->
+<main class="cert-body">
+
+  <p class="certifies-that">This certificate certifies that</p>
+  <p class="buyer-name">Kinshuk Khandelwal</p>
+  <p class="owner-line">is the rightful owner of the following authenticated work of art</p>
+
+  <div class="divider">◇ &thinsp; ◆ &thinsp; ◇</div>
+
+  <!-- PAINTING CARD -->
+  <div class="painting-card">
+    <div class="card-tags">
+      <span>Rajasthani Miniature</span>
+      <span>Mewar Tradition</span>
+      <span>4th Generation</span>
+    </div>
+    <p class="painting-name">Udaipur ki <em>Shaam</em></p>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <span class="stat-num">21</span>
+        <span class="stat-desc">Days · Total Duration</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">47</span>
+        <span class="stat-desc">Petals · Hand-painted Lotus</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">14</span>
+        <span class="stat-desc">Layers · Lapis Lazuli Blue</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">4</span>
+        <span class="stat-desc">Days · The Face Alone</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTIST + STUDIO -->
+  <div class="artist-studio">
+    <div class="info-cell">
+      <span class="info-label">Master Artist</span>
+      <p class="info-name">Jitendra Yadav</p>
+      <p class="info-note">Single-hair brush<br>No negotiation</p>
+    </div>
+    <div class="info-cell">
+      <span class="info-label">Studio</span>
+      <p class="info-name">Pacific Art, Udaipur</p>
+      <p class="info-note">Est. 1952<br>Hathi Pol Bazaar</p>
+    </div>
+  </div>
+
+  <!-- LINEAGE -->
+  <div class="lineage-section">
+    <span class="section-eyebrow">Shishya Parampara — Four Generations</span>
+    <div class="lineage-chain">
+      <div class="lineage-gen">
+        <span class="gen-num">I</span>
+        <span class="gen-name">Kishan Lal Yadav</span>
+        <span class="gen-note">Court artist of Mewar · 1947</span>
+      </div>
+      <div class="lineage-gen">
+        <span class="gen-num">II</span>
+        <span class="gen-name">Suresh Yadav</span>
+        <span class="gen-note">Introduced gold leaf · 26 students</span>
+      </div>
+      <div class="lineage-gen">
+        <span class="gen-num">III</span>
+        <span class="gen-name">Ram Yadav</span>
+        <span class="gen-note">Taught Jitendra for twelve years</span>
+      </div>
+      <div class="lineage-gen">
+        <span class="gen-num">IV</span>
+        <span class="gen-name">Jitendra Yadav</span>
+        <span class="gen-note">Lead artist · This piece</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATERIALS -->
+  <div class="materials-section">
+    <span class="section-eyebrow">Materials</span>
+    <div class="pills">
+      <span class="pill">Natural Mineral Pigments</span>
+      <span class="pill">24-Karat Gold Leaf</span>
+      <span class="pill">Handmade Wasli Paper</span>
+      <span class="pill">Lapis Lazuli</span>
+      <span class="pill">Malachite</span>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="cert-quote">
+    <span class="quote-mark">"</span>
+    <blockquote>
+      He did not look at the Lake Palace.<br>
+      He looked at the water it floated on.<br>
+      That is what I painted — not the building, but the stillness.
+    </blockquote>
+    <span class="quote-attr">— Jitendra Yadav &nbsp;·&nbsp; On This Piece</span>
+  </div>
+
+  <!-- BOTTOM: QR + SEAL + DETAILS -->
+  <div class="cert-bottom">
+
+    <div class="cert-qr">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fdevashishjose.github.io%2Forigintag%2Fcert%2F007%2F&bgcolor=F5F0E8&color=0F0E0D&qzone=2"
+        alt="QR code — scan to open this certificate"
+        width="96" height="96">
+      <p class="qr-label">Scan for<br>this certificate</p>
+    </div>
+
+    <div class="cert-seal-wrap">
+      <svg class="seal-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" stroke="#B8902A" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="50" cy="50" r="39" stroke="#B8902A" stroke-width="0.5" opacity="0.4"/>
+        <!-- sun / star burst -->
+        <g opacity="0.5" fill="#B8902A">
+          <polygon points="50,18 52,26 58,22 54,30 62,28 57,35 65,35 59,41 67,43 60,47 67,51 60,53 65,59 57,58 62,65 54,63 58,71 52,67 50,75 48,67 42,71 46,63 38,65 43,58 35,59 40,53 33,51 40,47 33,43 41,41 35,35 43,35 38,28 46,30 42,22 48,26"/>
+        </g>
+        <circle cx="50" cy="50" r="7" fill="#B8902A" opacity="0.25"/>
+        <text x="50" y="88" text-anchor="middle"
+          font-family="'DM Sans', sans-serif"
+          font-size="5.5" font-weight="300"
+          letter-spacing="2.2"
+          fill="#B8902A" opacity="0.55">PACIFIC ART</text>
+        <text x="50" y="95" text-anchor="middle"
+          font-family="'DM Sans', sans-serif"
+          font-size="4" font-weight="300"
+          letter-spacing="1.5"
+          fill="#B8902A" opacity="0.4">UDAIPUR · EST. 1952</text>
+      </svg>
+    </div>
+
+    <div class="cert-details">
+      <div class="detail-row">
+        <span class="detail-label">Issued</span>
+        <span class="detail-value">March 2026</span>
+        <span class="detail-sub">Udaipur, Rajasthan</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Certificate No.</span>
+        <span class="cert-number-typed" id="cert-no"></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Price</span>
+        <span class="detail-price">₹17,850</span>
+        <span class="detail-sub">21 days · ₹850 per day</span>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ── DARK FOOTER ───────────────────────────────────────────── -->
+<footer class="cert-footer">
+
+  <p class="footer-prompt">You now own a piece of Mewar tradition. Share it.</p>
+
+  <div class="share-row">
+    <a class="share-btn share-wa"
+       href="https://wa.me/?text=I%20just%20got%20a%20Rajasthani%20miniature%20from%20Udaipur%20%E2%80%94%2021%20days%2C%20four%20generations%20of%20craft.%20Here%27s%20the%20certificate%3A%20https%3A%2F%2Fdevashishjose.github.io%2Forigintag%2Fcert%2F007%2F"
+       target="_blank" rel="noopener noreferrer">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Share on WhatsApp
+    </a>
+    <button class="share-btn share-copy" id="copy-btn">Copy Link</button>
+    <button class="share-btn share-print" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-hashtag">#OriginTag</span>
+    <a class="footer-insta" href="https://instagram.com/pacific.art.udaipur" target="_blank" rel="noopener noreferrer">@pacific.art.udaipur</a>
+  </div>
+  <p class="footer-tagline">OriginTag &nbsp;·&nbsp; Every piece has a story. This is yours.</p>
+
+</footer>
+
+<script>
+  /* ── Typewriter for cert number ─────────────────────────── */
+  const certNoEl = document.getElementById('cert-no');
+  const certText = 'OT · 2024 · 007';
+  let i = 0;
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+  async function typeCertNo() {
+    await delay(600);
+    const iv = setInterval(() => {
+      certNoEl.textContent = certText.slice(0, ++i);
+      if (i >= certText.length) clearInterval(iv);
+    }, 68);
+  }
+  typeCertNo();
+
+  /* ── Copy link ──────────────────────────────────────────── */
+  document.getElementById('copy-btn').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      this.textContent = 'Copied ✓';
+      setTimeout(() => this.textContent = 'Copy Link', 2200);
+    });
+  });
+</script>
+
+</body>
+</html>
