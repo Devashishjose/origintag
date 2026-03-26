@@ -153,13 +153,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   HERO
+   HERO — Change 2: full viewport so escalation never bleeds in
    ───────────────────────────────────────────────────────────── */
 #hero {
   position: relative;
   width: 100%;
-  height: 70vh;
-  min-height: 320px;
+  height: 100vh;
+  min-height: 500px;
   background: var(--ink);
   overflow: hidden;
   clip-path: inset(0 0 100% 0);
@@ -259,6 +259,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   object-fit: cover;
   object-position: center;
 }
+/* Change 9 — captions start hidden, fade in 300ms after slide enters */
 .slide-caption {
   font-family: var(--serif);
   font-size: 20px;
@@ -267,6 +268,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   color: rgba(245,240,232,0.72);
   padding: 20px 24px 10px;
   line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.slide-caption.visible {
+  opacity: 1;
+  transform: none;
 }
 .carousel-dots {
   display: flex;
@@ -392,7 +400,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   transition: opacity 1.2s ease, transform 1.2s ease;
 }
 .esc-line:last-child { margin-bottom: 0; }
-.esc-line.on { opacity: 1; transform: none; }
+/* Change 3 — stagger uses .visible (set by JS setTimeout chain) */
+.esc-line.visible { opacity: 1; transform: none; }
 
 /* Five lines — lines 1, 2, 4, 5 standard; line 3 is the peak */
 .esc-line:nth-child(1),
@@ -411,10 +420,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   font-size: clamp(20px, 5vw, 40px);
   color: var(--cream);
 }
+/* Change 4 — "There never will be" same size as the others, not smaller */
 .esc-line:nth-child(5) {
-  font-size: clamp(16px, 4vw, 30px);
-  color: rgba(245,240,232,0.45);
-  font-style: italic;
+  font-size: clamp(20px, 5vw, 40px);
+  color: rgba(245,240,232,0.75);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -550,11 +559,19 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   display: flex;
   flex-direction: column;
 }
+/* Change 8 — chain items start hidden, staggered in by JS */
 .chain-item {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 14px 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.chain-item.visible {
+  opacity: 1;
+  transform: none;
 }
 .chain-gen {
   font-family: var(--serif);
@@ -640,6 +657,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   color: rgba(15,14,13,0.32);
   margin-bottom: 36px;
 }
+/* Change 7 — calc starts hidden, revealed by JS after count finishes */
 .close-calc {
   font-family: var(--sans);
   font-size: 13px;
@@ -647,7 +665,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   letter-spacing: 0.06em;
   color: rgba(15,14,13,0.38);
   margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+/* Change 7 — price starts hidden, JS sets opacity:1 when animation begins */
 .close-price {
   font-family: var(--serif);
   font-size: clamp(56px, 16vw, 108px);
@@ -656,6 +677,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   line-height: 1;
   margin-bottom: 36px;
   letter-spacing: -0.01em;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 .close-rule {
   border: none;
@@ -681,29 +704,33 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 
 /* ─────────────────────────────────────────────────────────────
-   PROVENANCE
+   PROVENANCE — Change 6: SVG world map
    ───────────────────────────────────────────────────────────── */
 #provenance {
   background: var(--ink);
-  padding: 80px 24px;
+  padding: 80px 0 80px;
 }
-.prov-inner { max-width: 460px; }
-.prov-locations {
-  margin: 32px 0 52px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.prov-inner { max-width: 100%; }
+.prov-header {
+  padding: 0 24px;
+  margin-bottom: 36px;
 }
-.prov-item {
-  font-family: var(--serif);
-  font-size: clamp(28px, 7.5vw, 48px);
-  font-weight: 200;
-  color: rgba(245,240,232,0.16);
-  line-height: 1.35;
-  transition: color 0.6s ease;
-  transform: translateY(28px);    /* override .r for colour-based reveal */
+.world-map-wrap {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 40px;
 }
-.prov-item.on { color: rgba(245,240,232,0.52); }
+.world-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* City labels inside SVG */
+.map-label {
+  font-family: var(--sans);
+  font-weight: 300;
+  fill: rgba(245,240,232,0.55);
+}
 .prov-note {
   font-family: var(--serif);
   font-size: clamp(16px, 4vw, 22px);
@@ -711,6 +738,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   font-weight: 300;
   color: rgba(245,240,232,0.35);
   line-height: 1.75;
+  padding: 0 24px;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -770,7 +798,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .pigments-text { padding: 44px 48px 0; }
 
   #close { padding: 96px 48px; }
-  #provenance { padding: 96px 48px; }
+  #provenance { padding: 96px 0; }
+  .prov-header { padding: 0 48px; }
+  .prov-note { padding: 0 48px; }
 
   #footer { flex-direction: row; justify-content: space-between; align-items: center; padding: 36px 48px; }
 }
@@ -865,7 +895,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .close-inner { max-width: 560px; }
 
   /* Provenance */
-  #provenance { padding: 120px 80px; }
+  #provenance { padding: 120px 0; }
+  .prov-header { padding: 0 80px; }
+  .prov-note { padding: 0 80px; }
 
   /* Footer */
   #footer { padding: 44px 80px; }
