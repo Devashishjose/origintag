@@ -569,13 +569,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   margin-left: 22px;
 }
 
-/* Generation V — future, muted */
+/* Generation V — future, no gold, more muted than I–III */
 .chain-item.future .chain-gen {
-  color: rgba(184,144,42,0.4);
-  border-color: rgba(184,144,42,0.2);
+  color: rgba(245,240,232,0.2);
+  border-color: rgba(245,240,232,0.08);
 }
 .chain-item.future .chain-desc {
-  color: rgba(245,240,232,0.28);
+  color: rgba(245,240,232,0.22);
   font-style: italic;
 }
 
