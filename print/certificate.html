@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Marriage Procession — Certificate of Authenticity · Pacific Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --ink:   #0F0E0D;
+      --cream: #FAF7F2;
+      --warm:  #F5F0E8;
+      --gold:  #B8902A;
+      --terra: #C4622D;
+      --serif: 'Cormorant Garamond', serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      background: #e8e2da;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+    }
+
+    /* ── OUTER FRAME — double gold border ───────────────────── */
+    .cert-page {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--cream);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18mm 16mm 14mm;
+    }
+
+    /* Outer border */
+    .cert-page::before {
+      content: '';
+      position: absolute;
+      inset: 9mm;
+      border: 1px solid rgba(184,144,42,0.5);
+      pointer-events: none;
+    }
+
+    /* Inner border (double rule) */
+    .cert-page::after {
+      content: '';
+      position: absolute;
+      inset: 11mm;
+      border: 1px solid rgba(184,144,42,0.2);
+      pointer-events: none;
+    }
+
+    /* ── CORNER ORNAMENTS ───────────────────────────────────── */
+    .corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      pointer-events: none;
+    }
+    .corner-tl { top: 7.5mm;  left: 7.5mm; }
+    .corner-tr { top: 7.5mm;  right: 7.5mm; transform: scaleX(-1); }
+    .corner-bl { bottom: 7.5mm; left: 7.5mm; transform: scaleY(-1); }
+    .corner-br { bottom: 7.5mm; right: 7.5mm; transform: scale(-1); }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .cert-eyebrow {
+      font-size: 7.5px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 300;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .cert-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .cert-title em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .cert-subtitle {
+      font-family: var(--serif);
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(15,14,13,0.42);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    /* ── ORNAMENTAL RULE ────────────────────────────────────── */
+    .cert-rule {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .cert-rule-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,144,42,0.4));
+    }
+    .cert-rule-line.rev {
+      background: linear-gradient(to left, transparent, rgba(184,144,42,0.4));
+    }
+    .cert-rule-diamond {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.55;
+    }
+
+    /* ── PAINTING IMAGE ─────────────────────────────────────── */
+    .cert-painting-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cert-painting-frame {
+      width: 130mm;
+      padding: 7px;
+      background: var(--cream);
+      border: 1px solid rgba(184,144,42,0.5);
+      box-shadow:
+        inset 0 0 0 1px rgba(184,144,42,0.18),
+        0 0 0 5px var(--cream),
+        0 0 0 6px rgba(184,144,42,0.2),
+        0 16px 40px rgba(15,14,13,0.1);
+    }
+
+    .cert-painting-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* PAC badge below frame */
+    .cert-pac-badge {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .cert-pac-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--terra);
+    }
+
+    .cert-pac-badge-text {
+      font-size: 7px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      font-weight: 300;
+    }
+
+    .cert-pac-badge-num {
+      font-size: 7px;
+      letter-spacing: 0.18em;
+      font-family: var(--serif);
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    /* ── STATEMENT BLOCK ────────────────────────────────────── */
+    .cert-statement {
+      width: 100%;
+      background: var(--ink);
+      padding: 20px 22px;
+      margin-bottom: 20px;
+    }
+
+    .cert-statement p {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,240,232,0.75);
+      line-height: 1.75;
+      text-align: center;
+    }
+
+    .cert-statement p em {
+      font-style: normal;
+      color: rgba(184,144,42,0.85);
+    }
+
+    /* ── LINEAGE TABLE ──────────────────────────────────────── */
+    .cert-lineage {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .cert-lineage-title {
+      font-size: 7px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.35);
+      font-weight: 300;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .lineage-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .lineage-table tr {
+      border-bottom: 1px solid rgba(15,14,13,0.06);
+    }
+
+    .lineage-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .lineage-table td {
+      padding: 7px 6px;
+      font-size: 9px;
+      font-weight: 300;
+      color: rgba(15,14,13,0.55);
+      vertical-align: middle;
+    }
+
+    .lineage-table td.gen-cell {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(15,14,13,0.28);
+      width: 28px;
+      text-align: center;
+    }
+
+    .lineage-table td.name-cell {
+      font-weight: 300;
+      color: rgba(15,14,13,0.65);
+    }
+
+    .lineage-table td.desc-cell {
+      font-size: 8px;
+      color: rgba(15,14,13,0.38);
+      text-align: right;
+    }
+
+    /* Gen IV — highlighted */
+    .lineage-table tr.active-gen td {
+      color: var(--terra);
+    }
+    .lineage-table tr.active-gen td.gen-cell {
+      color: var(--terra);
+    }
+    .lineage-table tr.active-gen td.name-cell {
+      color: var(--terra);
+      font-weight: 300;
+    }
+    .lineage-table tr.active-gen td.desc-cell {
+      color: rgba(196,98,45,0.55);
+    }
+
+    /* ── FOOTER ROW ─────────────────────────────────────────── */
+    .cert-footer {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+    .cert-footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .cert-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cert-footer-brand-name {
+      font-size: 7.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: rgba(15,14,13,0.5);
+    }
+
+    .cert-footer-address {
+      font-size: 7px;
+      letter-spacing: 0.1em;
+      color: rgba(15,14,13,0.3);
+      font-weight: 300;
+    }
+
+    /* QR */
+    .cert-qr-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cert-qr-box {
+      width: 52px;
+      height: 52px;
+      padding: 3px;
+      background: white;
+      border: 1px solid rgba(184,144,42,0.3);
+    }
+
+    #cert-qrcode canvas,
+    #cert-qrcode img {
+      width: 46px !important;
+      height: 46px !important;
+    }
+
+    .cert-qr-label {
+      font-size: 6px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.3);
+    }
+
+    /* ── PRINT ──────────────────────────────────────────────── */
+    @page {
+      size: 210mm 297mm portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html { background: none; }
+      body { width: 210mm; min-height: 297mm; }
+      .cert-page { min-height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cert-page">
+
+  <!-- Corner ornaments (SVG) -->
+  <svg class="corner corner-tl" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
+    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
+    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
+  </svg>
+  <svg class="corner corner-tr" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
+    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
+    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
+  </svg>
+  <svg class="corner corner-bl" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
+    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
+    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
+  </svg>
+  <svg class="corner corner-br" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
+    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
+    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
+  </svg>
+
+  <!-- Header -->
+  <p class="cert-eyebrow">Certificate of Authenticity</p>
+  <h1 class="cert-title">The <em>Marriage</em> Procession</h1>
+  <p class="cert-subtitle">Rajasthani Miniature · Natural Mineral Pigments · Silk</p>
+
+  <div class="cert-rule">
+    <span class="cert-rule-line rev"></span>
+    <span class="cert-rule-diamond"></span>
+    <span class="cert-rule-line"></span>
+  </div>
+
+  <!-- Painting -->
+  <div class="cert-painting-wrap">
+    <div class="cert-painting-frame">
+      <img src="../v3/images/hero.jpg" alt="The Marriage Procession — Rajasthani miniature by Jitendra Yadav">
+    </div>
+    <div class="cert-pac-badge">
+      <span class="cert-pac-badge-dot"></span>
+      <span class="cert-pac-badge-text">Verified Original &nbsp;·&nbsp; Pacific Art Catalogue</span>
+      <span class="cert-pac-badge-num">PAC — 2026 — 003</span>
+    </div>
+  </div>
+
+  <!-- Statement -->
+  <div class="cert-statement">
+    <p>What you are looking at took <em>28 days</em> to make and <em>four generations</em> to become possible. It was painted in natural mineral pigments — lapis from Afghanistan, malachite from Central Asia, ochre from nearby earth — ground by hand in stone mortars, on silk, using brushes made from a single hair of Siberian red squirrel fur. There is no other one like it. There never will be.</p>
+  </div>
+
+  <!-- Lineage -->
+  <div class="cert-lineage">
+    <p class="cert-lineage-title">Shishya Parampara — the unbroken line</p>
+    <table class="lineage-table">
+      <tr>
+        <td class="gen-cell">I</td>
+        <td class="name-cell">Unknown · Court Painter of Mewar</td>
+        <td class="desc-cell">Before 1947</td>
+      </tr>
+      <tr>
+        <td class="gen-cell">II</td>
+        <td class="name-cell">Kishan Singh Solanki</td>
+        <td class="desc-cell">Carried the tradition forward</td>
+      </tr>
+      <tr>
+        <td class="gen-cell">III</td>
+        <td class="name-cell">Naresh Yadav</td>
+        <td class="desc-cell">Passed it to his student</td>
+      </tr>
+      <tr class="active-gen">
+        <td class="gen-cell">IV</td>
+        <td class="name-cell">Jitendra Yadav — This painting</td>
+        <td class="desc-cell">Hathi Pol Bazaar, Udaipur</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="cert-rule">
+    <span class="cert-rule-line rev"></span>
+    <span class="cert-rule-diamond"></span>
+    <span class="cert-rule-line"></span>
+  </div>
+
+  <!-- Footer -->
+  <div class="cert-footer">
+    <div class="cert-footer-left">
+      <div class="cert-footer-brand">
+        <svg width="11" height="11" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="9" cy="9" r="7.5" stroke="#C4622D" stroke-width="1.4"/>
+          <circle cx="9" cy="9" r="2.4" fill="#C4622D"/>
+        </svg>
+        <span class="cert-footer-brand-name">Pacific Art · Udaipur</span>
+      </div>
+      <span class="cert-footer-address">Hathi Pol Bazaar, Udaipur · Est. 1952 · origintag.pacificart.in</span>
+    </div>
+
+    <div class="cert-qr-wrap">
+      <div class="cert-qr-box">
+        <div id="cert-qrcode"></div>
+      </div>
+      <span class="cert-qr-label">Full Story</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  new QRCode(document.getElementById('cert-qrcode'), {
+    text: 'https://devashishjose.github.io/origintag/v3/',
+    width: 46,
+    height: 46,
+    colorDark: '#0F0E0D',
+    colorLight: '#FFFFFF',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>

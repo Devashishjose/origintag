@@ -133,7 +133,7 @@ const pieceIdBadge  = document.querySelector('.piece-id-badge');
 const pieceIdNote   = document.querySelector('.piece-id-note');
 
 if (pieceIdCard && pieceIdNumber) {
-  const fullText     = 'PAC — 2024 — 007';
+  const fullText     = 'PAC — 2026 — 003';
   let cardLastRun    = 0;
   const cardCooldown = 2500;
 

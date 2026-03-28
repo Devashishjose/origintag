@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Marriage Procession — Gallery Card · Pacific Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --ink:   #0F0E0D;
+      --cream: #FAF7F2;
+      --warm:  #F5F0E8;
+      --gold:  #B8902A;
+      --terra: #C4622D;
+      --serif: 'Cormorant Garamond', serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 210mm;
+      height: 148mm;
+      background: var(--cream);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      color: var(--ink);
+    }
+
+    /* ── CARD SHELL ─────────────────────────────────────────── */
+    .card {
+      width: 210mm;
+      height: 148mm;
+      display: flex;
+      flex-direction: row;
+      background: var(--cream);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── LEFT COLUMN — painting ─────────────────────────────── */
+    .card-left {
+      width: 55%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Gradient blend into cream on the right edge */
+    .card-left::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 72px;
+      height: 100%;
+      background: linear-gradient(to right, transparent, var(--cream));
+    }
+
+    /* Bottom gradient for the text overlay */
+    .card-left-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 24px 18px;
+      background: linear-gradient(to top, rgba(15,14,13,0.72) 0%, transparent 100%);
+    }
+
+    .card-painting-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: #FAF7F2;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+
+    .card-painting-name em {
+      font-style: italic;
+      color: rgba(184,144,42,0.9);
+    }
+
+    .card-painting-sub {
+      font-size: 7.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-top: 4px;
+      font-weight: 300;
+    }
+
+    /* ── RIGHT COLUMN ───────────────────────────────────────── */
+    .card-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 24px 22px 18px;
+      gap: 0;
+    }
+
+    /* ── PAC LOGO / BRAND ───────────────────────────────────── */
+    .card-brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 18px;
+      align-self: flex-start;
+    }
+
+    .card-brand-dot {
+      width: 13px;
+      height: 13px;
+    }
+
+    .card-brand-name {
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--terra);
+    }
+
+    /* ── QR CODE ────────────────────────────────────────────── */
+    .qr-wrap {
+      width: 88px;
+      height: 88px;
+      padding: 6px;
+      background: white;
+      border: 1px solid rgba(184,144,42,0.35);
+      box-shadow:
+        0 0 0 3px var(--cream),
+        0 0 0 4px rgba(184,144,42,0.15);
+      margin-bottom: 10px;
+    }
+
+    #qrcode canvas,
+    #qrcode img {
+      width: 76px !important;
+      height: 76px !important;
+    }
+
+    .qr-label {
+      font-size: 6.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    /* ── GOLD DIVIDER ───────────────────────────────────────── */
+    .card-divider {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.55;
+      margin-bottom: 16px;
+      align-self: center;
+    }
+
+    /* ── STATS ──────────────────────────────────────────────── */
+    .card-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-self: stretch;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 26px;
+    }
+
+    .stat-label {
+      font-size: 7.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: rgba(15,14,13,0.52);
+      padding-bottom: 1px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .card-footer {
+      margin-top: 14px;
+      align-self: flex-start;
+      font-size: 6.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.28);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── OUTER GOLD BORDER ──────────────────────────────────── */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid rgba(184,144,42,0.18);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ── PRINT STYLES ───────────────────────────────────────── */
+    @page {
+      size: 210mm 148mm landscape;
+      margin: 0;
+    }
+
+    @media print {
+      html, body { width: 210mm; height: 148mm; }
+      .card { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- LEFT — painting image -->
+  <div class="card-left">
+    <img src="../v3/images/hero.jpg" alt="The Marriage Procession — Rajasthani miniature by Jitendra Yadav">
+    <div class="card-left-overlay">
+      <p class="card-painting-name">The <em>Marriage</em><br>Procession</p>
+      <p class="card-painting-sub">Rajasthani Miniature · Natural Pigments · Silk</p>
+    </div>
+  </div>
+
+  <!-- RIGHT — QR + stats -->
+  <div class="card-right">
+
+    <div class="card-brand">
+      <svg class="card-brand-dot" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="9" r="7.5" stroke="#C4622D" stroke-width="1.4"/>
+        <circle cx="9" cy="9" r="2.4" fill="#C4622D"/>
+      </svg>
+      <span class="card-brand-name">Pacific Art · Udaipur</span>
+    </div>
+
+    <div class="qr-wrap">
+      <div id="qrcode"></div>
+    </div>
+
+    <p class="qr-label">Scan for the full story</p>
+
+    <div class="card-divider"></div>
+
+    <div class="card-stats">
+      <div class="stat-row">
+        <span class="stat-num">28</span>
+        <span class="stat-label">Days of work</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Generations of craft</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Artist · One painting</span>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      Pacific Art · Hathi Pol Bazaar, Udaipur<br>
+      PAC — 2026 — 003
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'https://devashishjose.github.io/origintag/v3/',
+    width: 76,
+    height: 76,
+    colorDark: '#0F0E0D',
+    colorLight: '#FFFFFF',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>
