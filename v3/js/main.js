@@ -199,7 +199,7 @@ if (pieceIdCard && pieceIdNumber) {
 const closePriceEl  = document.querySelector('.close-price');
 const closeCalcEl   = document.querySelector('.close-calc');
 let   priceLastRun  = 0;
-const priceCooldown = 2500;
+const priceCooldown = 30000;
 
 if (closePriceEl) {
   const priceObserver = new IntersectionObserver(entries => {

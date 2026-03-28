@@ -630,11 +630,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 /* Change 7 — calc starts hidden, revealed by JS after count finishes */
 .close-calc {
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: rgba(15,14,13,0.38);
-  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(15,14,13,0.62);
+  margin-bottom: 12px;
   opacity: 0;
   transition: opacity 0.8s ease;
 }
