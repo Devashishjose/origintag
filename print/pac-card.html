@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAC Verification Card — Pacific Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold:  #B8902A;
+      --terra: #C4622D;
+      --cream: #F5F0E8;
+      --serif: 'Cormorant Garamond', serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background: #1a1612;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      padding: 48px 24px;
+    }
+
+    /* ── THE CARD ───────────────────────────────────────────── */
+    .pac-card {
+      width: 100%;
+      max-width: 640px;
+      background: linear-gradient(160deg, #242018 0%, #181410 100%);
+      border: 1px solid rgba(184,144,42,0.55);
+      border-top: 3px solid rgba(184,144,42,0.85);
+      border-radius: 5px;
+      padding: 36px 40px 32px;
+      box-shadow:
+        0 0 0 1px rgba(184,144,42,0.06) inset,
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 120px rgba(184,144,42,0.04);
+      position: relative;
+    }
+
+    /* Subtle corner ornaments */
+    .pac-card::before,
+    .pac-card::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: rgba(184,144,42,0.3);
+      border-style: solid;
+    }
+    .pac-card::before {
+      top: 10px; left: 10px;
+      border-width: 1px 0 0 1px;
+    }
+    .pac-card::after {
+      bottom: 10px; right: 10px;
+      border-width: 0 1px 1px 0;
+    }
+
+    /* ── TOP ROW ────────────────────────────────────────────── */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .card-label {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,120,17,0.18);
+      border: 1px solid rgba(80,160,30,0.38);
+      border-radius: 20px;
+      padding: 5px 14px 5px 10px;
+      font-size: 11px;
+      font-weight: 300;
+      color: #7ec940;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7ec940;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(126,201,64,0.6);
+    }
+
+    /* ── NUMBER ─────────────────────────────────────────────── */
+    .card-number {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.14em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    /* ── META ───────────────────────────────────────────────── */
+    .card-meta {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(245,240,232,0.36);
+      margin-bottom: 22px;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────────────── */
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(184,144,42,0.22), transparent);
+      margin-bottom: 18px;
+    }
+
+    /* ── NOTE ───────────────────────────────────────────────── */
+    .card-note {
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(245,240,232,0.28);
+    }
+
+    /* ── FOOTER ROW ─────────────────────────────────────────── */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(184,144,42,0.1);
+    }
+
+    .card-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .card-footer-brand-name {
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: rgba(245,240,232,0.28);
+    }
+
+    .card-footer-year {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(184,144,42,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── TYPEWRITER CURSOR ──────────────────────────────────── */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.8em;
+      background: rgba(245,240,232,0.5);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    .cursor.done { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="pac-card">
+
+  <div class="card-top">
+    <span class="card-label">Registered Original</span>
+    <span class="card-badge">
+      <span class="badge-dot"></span>Authenticated
+    </span>
+  </div>
+
+  <p class="card-number" id="pac-number"></p>
+
+  <p class="card-meta">Natural mineral pigments &nbsp;·&nbsp; Silk &nbsp;·&nbsp; Mewar school</p>
+
+  <div class="card-divider"></div>
+
+  <p class="card-note">Registered in the Pacific Art catalogue. This number is unique to this painting and confirms its authenticity as an original work.</p>
+
+  <div class="card-footer">
+    <div class="card-footer-brand">
+      <svg width="13" height="13" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="9" r="7.5" stroke="#C4622D" stroke-width="1.4"/>
+        <circle cx="9" cy="9" r="2.4" fill="#C4622D"/>
+      </svg>
+      <span class="card-footer-brand-name">Pacific Art &nbsp;·&nbsp; Udaipur</span>
+    </div>
+    <span class="card-footer-year">2026</span>
+  </div>
+
+</div>
+
+<script>
+  const el       = document.getElementById('pac-number');
+  const fullText = 'PAC — 2026 — 003';
+  let i = 0;
+
+  /* Add blinking cursor */
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  el.after(cursor);
+
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      el.textContent = fullText.slice(0, ++i);
+      if (i >= fullText.length) {
+        clearInterval(iv);
+        setTimeout(() => cursor.classList.add('done'), 1200);
+      }
+    }, 72);
+  }, 500);
+</script>
+
+</body>
+</html>
