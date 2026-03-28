@@ -56,7 +56,7 @@
     /* ── TOP — landscape painting ───────────────────────────── */
     .card-painting {
       width: 100%;
-      flex: 0 0 62%;
+      flex: 0 0 55%;
       position: relative;
       overflow: hidden;
       background: #ffffff;
@@ -71,28 +71,16 @@
       background: #ffffff;
     }
 
-    /* Gradient fade to white at bottom */
-    .card-painting::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 44px;
-      background: linear-gradient(to bottom, transparent, #ffffff);
-    }
-
-    /* Painting title overlay — bottom left */
-    .card-painting-label {
-      position: absolute;
-      bottom: 14px;
-      left: 18px;
-      z-index: 2;
+    /* ── TITLE STRIP — below painting ───────────────────────── */
+    .card-title-strip {
+      padding: 8px 18px 6px;
+      border-top: 1px solid rgba(184,144,42,0.18);
+      background: var(--cream);
     }
 
     .card-painting-name {
       font-family: var(--serif);
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.03em;
@@ -108,7 +96,7 @@
       font-size: 7px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(15,14,13,0.42);
+      color: rgba(15,14,13,0.38);
       margin-top: 2px;
       font-weight: 300;
     }
@@ -241,10 +229,12 @@
   <!-- TOP — full-width landscape painting -->
   <div class="card-painting">
     <img src="../v3/images/hero.jpg" alt="The Marriage Procession — Rajasthani miniature by Jitendra Yadav">
-    <div class="card-painting-label">
-      <p class="card-painting-name">The <em>Marriage</em> Procession</p>
-      <p class="card-painting-sub">Rajasthani Miniature · Natural Pigments · Silk</p>
-    </div>
+  </div>
+
+  <!-- TITLE STRIP — below painting, above stats row -->
+  <div class="card-title-strip">
+    <p class="card-painting-name">The <em>Marriage</em> Procession</p>
+    <p class="card-painting-sub">Rajasthani Miniature · Natural Pigments · Silk</p>
   </div>
 
   <!-- BOTTOM ROW — brand/stats + QR -->
