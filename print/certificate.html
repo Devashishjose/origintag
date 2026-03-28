@@ -24,7 +24,7 @@
 
     html {
       -webkit-text-size-adjust: 100%;
-      background: #e8e2da;
+      background: #ddd8ce;
     }
 
     body {
@@ -33,459 +33,675 @@
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
       width: 210mm;
-      min-height: 297mm;
       margin: 0 auto;
     }
 
-    /* ── OUTER FRAME — double gold border ───────────────────── */
-    .cert-page {
-      width: 210mm;
-      min-height: 297mm;
-      background: var(--cream);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 18mm 16mm 14mm;
+    /* ─── DARK HEADER ──────────────────────────────────────────── */
+    .cert-header {
+      background: var(--ink);
+      padding: 32px 28px 28px;
+      text-align: center;
     }
-
-    /* Outer border */
-    .cert-page::before {
-      content: '';
-      position: absolute;
-      inset: 9mm;
-      border: 1px solid rgba(184,144,42,0.5);
-      pointer-events: none;
-    }
-
-    /* Inner border (double rule) */
-    .cert-page::after {
-      content: '';
-      position: absolute;
-      inset: 11mm;
-      border: 1px solid rgba(184,144,42,0.2);
-      pointer-events: none;
-    }
-
-    /* ── CORNER ORNAMENTS ───────────────────────────────────── */
-    .corner {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      pointer-events: none;
-    }
-    .corner-tl { top: 7.5mm;  left: 7.5mm; }
-    .corner-tr { top: 7.5mm;  right: 7.5mm; transform: scaleX(-1); }
-    .corner-bl { bottom: 7.5mm; left: 7.5mm; transform: scaleY(-1); }
-    .corner-br { bottom: 7.5mm; right: 7.5mm; transform: scale(-1); }
-
-    /* ── HEADER ─────────────────────────────────────────────── */
-    .cert-eyebrow {
-      font-size: 7.5px;
-      letter-spacing: 0.32em;
+    .cert-meta {
+      font-size: 8.5px;
+      font-weight: 300;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
       color: var(--gold);
-      font-weight: 300;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       opacity: 0.8;
     }
-
     .cert-title {
       font-family: var(--serif);
       font-size: 28px;
       font-weight: 300;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-      text-align: center;
-      line-height: 1.2;
-      margin-bottom: 4px;
+      letter-spacing: 0.1em;
+      color: var(--warm);
+      margin-bottom: 5px;
     }
-
-    .cert-title em {
-      font-style: italic;
-      color: var(--terra);
-    }
-
     .cert-subtitle {
       font-family: var(--serif);
-      font-size: 11px;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.32);
+    }
+
+    /* ─── PAINTING ZONE ────────────────────────────────────────── */
+    .painting-zone {
+      background: var(--warm);
+      padding: 36px 28px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid rgba(184,144,42,0.2);
+      border-bottom: 1px solid rgba(184,144,42,0.12);
+    }
+    .painting-zone-rule {
+      width: 44px;
+      height: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .painting-zone-rule span {
+      display: block; height: 1px; background: var(--gold);
+    }
+    .painting-zone-rule span:first-child { opacity: 0.5; }
+    .painting-zone-rule span:last-child  { opacity: 0.2; }
+
+    .painting-frame-outer {
+      width: 78%;
+      max-width: 340px;
+      padding: 7px;
+      background: var(--warm);
+      border: 1px solid rgba(184,144,42,0.55);
+      box-shadow:
+        inset 0 0 0 1px rgba(184,144,42,0.18),
+        0 0 0 5px var(--warm),
+        0 0 0 6px rgba(184,144,42,0.22),
+        0 16px 40px rgba(15,14,13,0.11);
+    }
+    .painting-frame-outer img {
+      width: 100%; height: auto; display: block;
+    }
+    .painting-caption {
+      margin-top: 18px;
+      text-align: center;
+    }
+    .painting-caption-name {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+    }
+    .painting-caption-name em { font-style: italic; color: var(--terra); }
+    .painting-caption-tags {
+      margin-top: 6px;
+      font-size: 8.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.35);
+      font-weight: 300;
+    }
+
+    /* ─── CERT BODY ────────────────────────────────────────────── */
+    .cert-body {
+      background: var(--cream);
+      padding: 38px 28px 0;
+    }
+
+    /* Ownership */
+    .ownership-label {
+      font-size: 8.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.35);
+      text-align: center;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .buyer-name {
+      font-family: var(--serif);
+      font-size: 44px;
+      font-weight: 300;
+      font-style: italic;
+      text-align: center;
+      color: var(--ink);
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+    .acquired-line {
+      font-family: var(--serif);
+      font-size: 12px;
       font-style: italic;
       font-weight: 300;
       color: rgba(15,14,13,0.42);
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 32px;
+      line-height: 1.7;
     }
 
-    /* ── ORNAMENTAL RULE ────────────────────────────────────── */
-    .cert-rule {
+    /* Gold rule */
+    .gold-rule {
       display: flex;
       align-items: center;
-      gap: 10px;
-      width: 100%;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin: 0 0 28px;
     }
-    .cert-rule-line {
+    .gold-rule::before, .gold-rule::after {
+      content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(184,144,42,0.4));
+      background: linear-gradient(to right, transparent, rgba(184,144,42,0.35));
     }
-    .cert-rule-line.rev {
-      background: linear-gradient(to left, transparent, rgba(184,144,42,0.4));
+    .gold-rule::after {
+      background: linear-gradient(to left, transparent, rgba(184,144,42,0.35));
     }
-    .cert-rule-diamond {
-      width: 5px;
-      height: 5px;
+    .gold-rule-diamond {
+      width: 5px; height: 5px;
       background: var(--gold);
       transform: rotate(45deg);
       opacity: 0.55;
+      flex-shrink: 0;
     }
 
-    /* ── PAINTING IMAGE ─────────────────────────────────────── */
-    .cert-painting-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* Work details grid */
+    .work-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(15,14,13,0.08);
       margin-bottom: 20px;
     }
-
-    .cert-painting-frame {
-      width: 130mm;
-      padding: 7px;
-      background: var(--cream);
-      border: 1px solid rgba(184,144,42,0.5);
-      box-shadow:
-        inset 0 0 0 1px rgba(184,144,42,0.18),
-        0 0 0 5px var(--cream),
-        0 0 0 6px rgba(184,144,42,0.2),
-        0 16px 40px rgba(15,14,13,0.1);
+    .work-cell { padding: 15px 16px; }
+    .work-cell + .work-cell { border-left: 1px solid rgba(15,14,13,0.08); }
+    .work-label {
+      font-size: 8.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .work-value {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .work-sub {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(15,14,13,0.4);
+      margin-top: 3px;
     }
 
-    .cert-painting-frame img {
-      width: 100%;
-      height: auto;
+    /* Key stat */
+    .key-stat {
+      text-align: center;
+      padding: 20px 24px;
+      border: 1px solid rgba(15,14,13,0.08);
+      margin-bottom: 20px;
+    }
+    .key-stat-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      display: block;
+    }
+    .key-stat-desc {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.38);
+      margin-top: 5px;
       display: block;
     }
 
-    /* PAC badge below frame */
-    .cert-pac-badge {
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .cert-pac-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--terra);
-    }
-
-    .cert-pac-badge-text {
-      font-size: 7px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(15,14,13,0.38);
-      font-weight: 300;
-    }
-
-    .cert-pac-badge-num {
-      font-size: 7px;
-      letter-spacing: 0.18em;
-      font-family: var(--serif);
-      color: var(--gold);
-      opacity: 0.8;
-    }
-
-    /* ── STATEMENT BLOCK ────────────────────────────────────── */
-    .cert-statement {
-      width: 100%;
-      background: var(--ink);
-      padding: 20px 22px;
-      margin-bottom: 20px;
-    }
-
-    .cert-statement p {
-      font-family: var(--serif);
-      font-size: 13px;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(245,240,232,0.75);
-      line-height: 1.75;
-      text-align: center;
-    }
-
-    .cert-statement p em {
-      font-style: normal;
-      color: rgba(184,144,42,0.85);
-    }
-
-    /* ── LINEAGE TABLE ──────────────────────────────────────── */
-    .cert-lineage {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .cert-lineage-title {
-      font-size: 7px;
-      letter-spacing: 0.28em;
+    /* Lineage grid */
+    .lineage-section { margin-bottom: 20px; }
+    .section-eyebrow {
+      font-size: 8.5px;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: rgba(15,14,13,0.35);
-      font-weight: 300;
+      display: block;
       margin-bottom: 12px;
-      text-align: center;
     }
-
-    .lineage-table {
-      width: 100%;
-      border-collapse: collapse;
+    .lineage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(15,14,13,0.08);
+      border: 1px solid rgba(15,14,13,0.08);
     }
-
-    .lineage-table tr {
-      border-bottom: 1px solid rgba(15,14,13,0.06);
+    .lineage-cell {
+      background: var(--cream);
+      padding: 12px 14px;
     }
-
-    .lineage-table tr:last-child {
-      border-bottom: none;
-    }
-
-    .lineage-table td {
-      padding: 7px 6px;
-      font-size: 9px;
-      font-weight: 300;
-      color: rgba(15,14,13,0.55);
-      vertical-align: middle;
-    }
-
-    .lineage-table td.gen-cell {
-      font-family: var(--serif);
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(15,14,13,0.28);
-      width: 28px;
-      text-align: center;
-    }
-
-    .lineage-table td.name-cell {
-      font-weight: 300;
-      color: rgba(15,14,13,0.65);
-    }
-
-    .lineage-table td.desc-cell {
+    .lineage-cell.active { background: rgba(15,14,13,0.025); }
+    .gen-num {
       font-size: 8px;
-      color: rgba(15,14,13,0.38);
-      text-align: right;
-    }
-
-    /* Gen IV — highlighted */
-    .lineage-table tr.active-gen td {
-      color: var(--terra);
-    }
-    .lineage-table tr.active-gen td.gen-cell {
-      color: var(--terra);
-    }
-    .lineage-table tr.active-gen td.name-cell {
-      color: var(--terra);
-      font-weight: 300;
-    }
-    .lineage-table tr.active-gen td.desc-cell {
-      color: rgba(196,98,45,0.55);
-    }
-
-    /* ── FOOTER ROW ─────────────────────────────────────────── */
-    .cert-footer {
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: auto;
-      padding-top: 12px;
-    }
-
-    .cert-footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .cert-footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .cert-footer-brand-name {
-      font-size: 7.5px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      font-weight: 300;
-      color: rgba(15,14,13,0.5);
+      color: var(--terra);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .gen-name {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .gen-note {
+      font-size: 9px;
+      font-style: italic;
+      color: rgba(15,14,13,0.38);
+      line-height: 1.4;
     }
 
-    .cert-footer-address {
-      font-size: 7px;
-      letter-spacing: 0.1em;
-      color: rgba(15,14,13,0.3);
+    /* Materials */
+    .materials-section { margin-bottom: 22px; }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .pill {
+      font-size: 10px;
       font-weight: 300;
+      letter-spacing: 0.03em;
+      border: 1px solid rgba(15,14,13,0.15);
+      padding: 4px 12px;
+      color: rgba(15,14,13,0.58);
     }
 
-    /* QR */
-    .cert-qr-wrap {
+    /* Piece auth card */
+    .piece-auth-card {
+      background: linear-gradient(160deg, #1E1B15 0%, #161410 100%);
+      border: 1px solid rgba(184,144,42,0.55);
+      border-top: 3px solid rgba(184,144,42,0.75);
+      border-radius: 3px;
+      padding: 18px 20px 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.16), inset 0 0 0 1px rgba(184,144,42,0.07);
+    }
+    .piece-auth-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .piece-auth-label {
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .piece-auth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(59,109,17,0.2);
+      border: 1px solid rgba(59,109,17,0.4);
+      border-radius: 20px;
+      padding: 3px 10px 3px 8px;
+      font-size: 9.5px;
+      font-weight: 300;
+      color: #72b83a;
+    }
+    .piece-auth-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #72b83a;
+      flex-shrink: 0;
+    }
+    .piece-auth-number {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 300;
+      color: #F5F0E8;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .piece-auth-meta {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: rgba(245,240,232,0.38);
+      margin-bottom: 10px;
+    }
+    .piece-auth-note {
+      font-size: 9.5px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(245,240,232,0.26);
+      border-top: 1px solid rgba(184,144,42,0.15);
+      padding-top: 10px;
+    }
+
+    /* Cert bottom — seal + registry */
+    .cert-bottom {
+      border-top: 1px solid rgba(15,14,13,0.08);
+      padding: 24px 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .seal-svg { width: 78px; height: 78px; flex-shrink: 0; }
+
+    .cert-registry { flex: 1; text-align: right; }
+    .registry-row { margin-bottom: 10px; }
+    .registry-label {
+      font-size: 8.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(15,14,13,0.35);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .registry-value {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+    .registry-sub {
+      font-size: 9.5px;
+      color: rgba(15,14,13,0.35);
+      display: block;
+    }
+    .registry-price {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--ink);
+      display: block;
+    }
+    #cert-no {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    /* ─── DARK FOOTER ──────────────────────────────────────────── */
+    .cert-footer {
+      background: var(--ink);
+      padding: 36px 28px 32px;
+      border-top: 1px solid rgba(184,144,42,0.18);
+    }
+
+    .footer-qr-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      margin-bottom: 24px;
     }
-
-    .cert-qr-box {
-      width: 52px;
-      height: 52px;
-      padding: 3px;
+    .footer-qr-box {
+      width: 88px; height: 88px;
+      padding: 5px;
       background: white;
-      border: 1px solid rgba(184,144,42,0.3);
+      margin-bottom: 10px;
     }
-
-    #cert-qrcode canvas,
-    #cert-qrcode img {
-      width: 46px !important;
-      height: 46px !important;
+    #footer-qrcode canvas,
+    #footer-qrcode img {
+      width: 78px !important;
+      height: 78px !important;
     }
-
-    .cert-qr-label {
-      font-size: 6px;
-      letter-spacing: 0.16em;
+    .footer-qr-label {
+      font-size: 8.5px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(15,14,13,0.3);
+      color: rgba(245,240,232,0.3);
+      text-align: center;
+      line-height: 1.7;
+    }
+    .footer-qr-link {
+      font-size: 9.5px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-decoration: none;
+      margin-top: 4px;
+      display: block;
+      text-align: center;
+      opacity: 0.65;
     }
 
-    /* ── PRINT ──────────────────────────────────────────────── */
+    .footer-divider {
+      height: 1px;
+      background: rgba(245,240,232,0.07);
+      margin-bottom: 20px;
+    }
+
+    .footer-prompt {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(245,240,232,0.55);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(245,240,232,0.07);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .footer-hashtag {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .footer-tagline-text {
+      font-size: 8.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.14);
+    }
+
+    /* ─── PRINT ────────────────────────────────────────────────── */
     @page {
       size: 210mm 297mm portrait;
       margin: 0;
     }
 
     @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       html { background: none; }
-      body { width: 210mm; min-height: 297mm; }
-      .cert-page { min-height: 297mm; }
+      body { width: 210mm; }
+      .cert-header { background: var(--ink); }
+      .cert-footer  { background: var(--ink); }
+      .piece-auth-card { background: #1A1713; }
+      .footer-prompt { display: none; }
+      .footer-meta   { display: none; }
+      .buyer-name { font-size: 40px; }
     }
   </style>
 </head>
 <body>
 
-<div class="cert-page">
+<!-- ── DARK HEADER ─────────────────────────────────────────────── -->
+<header class="cert-header">
+  <p class="cert-meta">OriginTag &nbsp;·&nbsp; Pacific Art &nbsp;·&nbsp; Udaipur</p>
+  <h1 class="cert-title">Certificate of Authenticity</h1>
+  <p class="cert-subtitle">An authenticated record of ownership</p>
+</header>
 
-  <!-- Corner ornaments (SVG) -->
-  <svg class="corner corner-tl" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
-    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
-    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
-  </svg>
-  <svg class="corner corner-tr" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
-    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
-    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
-  </svg>
-  <svg class="corner corner-bl" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
-    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
-    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
-  </svg>
-  <svg class="corner corner-br" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20 L2 2 L20 2" stroke="rgba(184,144,42,0.5)" stroke-width="0.8" fill="none"/>
-    <path d="M2 6 L6 2" stroke="rgba(184,144,42,0.35)" stroke-width="0.6" fill="none"/>
-    <circle cx="2" cy="2" r="1.5" fill="rgba(184,144,42,0.4)"/>
-  </svg>
+<!-- ── PAINTING ZONE ──────────────────────────────────────────── -->
+<div class="painting-zone">
+  <div class="painting-zone-rule" aria-hidden="true">
+    <span></span><span></span>
+  </div>
+  <div class="painting-frame-outer">
+    <img src="../v3/images/hero.jpg" alt="The Marriage Procession — Rajasthani miniature by Jitendra Yadav">
+  </div>
+  <div class="painting-caption">
+    <p class="painting-caption-name">The Marriage <em>Procession</em></p>
+    <p class="painting-caption-tags">Rajasthani Miniature &nbsp;·&nbsp; Mewar Tradition &nbsp;·&nbsp; 4th Generation</p>
+  </div>
+</div>
 
-  <!-- Header -->
-  <p class="cert-eyebrow">Certificate of Authenticity</p>
-  <h1 class="cert-title">The <em>Marriage</em> Procession</h1>
-  <p class="cert-subtitle">Rajasthani Miniature · Natural Mineral Pigments · Silk</p>
+<!-- ── CERT BODY ──────────────────────────────────────────────── -->
+<main class="cert-body">
 
-  <div class="cert-rule">
-    <span class="cert-rule-line rev"></span>
-    <span class="cert-rule-diamond"></span>
-    <span class="cert-rule-line"></span>
+  <span class="ownership-label">This painting was brought home by</span>
+  <p class="buyer-name">Ankur Grover<br>&amp; Mandeep Toor</p>
+  <p class="acquired-line">
+    from Pacific Art, Hathi Pol Bazaar, Udaipur<br>
+    March 2026
+  </p>
+
+  <div class="gold-rule"><span class="gold-rule-diamond"></span></div>
+
+  <!-- Artist + Gallery -->
+  <div class="work-details">
+    <div class="work-cell">
+      <span class="work-label">Artist</span>
+      <p class="work-value">Jitendra Yadav</p>
+      <p class="work-sub">Udaipur, Rajasthan</p>
+    </div>
+    <div class="work-cell">
+      <span class="work-label">Gallery</span>
+      <p class="work-value">Pacific Art</p>
+      <p class="work-sub">Hathi Pol Bazaar · Est. 1952</p>
+    </div>
   </div>
 
-  <!-- Painting -->
-  <div class="cert-painting-wrap">
-    <div class="cert-painting-frame">
-      <img src="../v3/images/hero.jpg" alt="The Marriage Procession — Rajasthani miniature by Jitendra Yadav">
-    </div>
-    <div class="cert-pac-badge">
-      <span class="cert-pac-badge-dot"></span>
-      <span class="cert-pac-badge-text">Verified Original &nbsp;·&nbsp; Pacific Art Catalogue</span>
-      <span class="cert-pac-badge-num">PAC — 2026 — 003</span>
-    </div>
-  </div>
-
-  <!-- Statement -->
-  <div class="cert-statement">
-    <p>What you are looking at took <em>28 days</em> to make and <em>four generations</em> to become possible. It was painted in natural mineral pigments — lapis from Afghanistan, malachite from Central Asia, ochre from nearby earth — ground by hand in stone mortars, on silk, using brushes made from a single hair of Siberian red squirrel fur. There is no other one like it. There never will be.</p>
+  <!-- Key stat -->
+  <div class="key-stat">
+    <span class="key-stat-num">28</span>
+    <span class="key-stat-desc">Days to make this painting</span>
   </div>
 
   <!-- Lineage -->
-  <div class="cert-lineage">
-    <p class="cert-lineage-title">Shishya Parampara — the unbroken line</p>
-    <table class="lineage-table">
-      <tr>
-        <td class="gen-cell">I</td>
-        <td class="name-cell">Unknown · Court Painter of Mewar</td>
-        <td class="desc-cell">Before 1947</td>
-      </tr>
-      <tr>
-        <td class="gen-cell">II</td>
-        <td class="name-cell">Kishan Singh Solanki</td>
-        <td class="desc-cell">Carried the tradition forward</td>
-      </tr>
-      <tr>
-        <td class="gen-cell">III</td>
-        <td class="name-cell">Naresh Yadav</td>
-        <td class="desc-cell">Passed it to his student</td>
-      </tr>
-      <tr class="active-gen">
-        <td class="gen-cell">IV</td>
-        <td class="name-cell">Jitendra Yadav — This painting</td>
-        <td class="desc-cell">Hathi Pol Bazaar, Udaipur</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="cert-rule">
-    <span class="cert-rule-line rev"></span>
-    <span class="cert-rule-diamond"></span>
-    <span class="cert-rule-line"></span>
-  </div>
-
-  <!-- Footer -->
-  <div class="cert-footer">
-    <div class="cert-footer-left">
-      <div class="cert-footer-brand">
-        <svg width="11" height="11" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="9" cy="9" r="7.5" stroke="#C4622D" stroke-width="1.4"/>
-          <circle cx="9" cy="9" r="2.4" fill="#C4622D"/>
-        </svg>
-        <span class="cert-footer-brand-name">Pacific Art · Udaipur</span>
+  <div class="lineage-section">
+    <span class="section-eyebrow">Shishya Parampara — Four Generations</span>
+    <div class="lineage-grid">
+      <div class="lineage-cell">
+        <span class="gen-num">I Generation</span>
+        <span class="gen-name">Unknown</span>
+        <span class="gen-note">Court painter of Mewar · before 1947</span>
       </div>
-      <span class="cert-footer-address">Hathi Pol Bazaar, Udaipur · Est. 1952 · origintag.pacificart.in</span>
-    </div>
-
-    <div class="cert-qr-wrap">
-      <div class="cert-qr-box">
-        <div id="cert-qrcode"></div>
+      <div class="lineage-cell">
+        <span class="gen-num">II Generation</span>
+        <span class="gen-name">Kishan Singh Solanki</span>
+        <span class="gen-note">Carried the tradition forward</span>
       </div>
-      <span class="cert-qr-label">Full Story</span>
+      <div class="lineage-cell">
+        <span class="gen-num">III Generation</span>
+        <span class="gen-name">Naresh Yadav</span>
+        <span class="gen-note">Passed it to his student</span>
+      </div>
+      <div class="lineage-cell active">
+        <span class="gen-num">IV Generation</span>
+        <span class="gen-name">Jitendra Yadav</span>
+        <span class="gen-note">This painting</span>
+      </div>
     </div>
   </div>
 
-</div>
+  <!-- Materials -->
+  <div class="materials-section">
+    <span class="section-eyebrow">Materials</span>
+    <div class="pills">
+      <span class="pill">Natural Mineral Pigments</span>
+      <span class="pill">24-Karat Gold Leaf</span>
+      <span class="pill">Handmade Silk</span>
+      <span class="pill">Lapis Lazuli</span>
+      <span class="pill">Malachite</span>
+    </div>
+  </div>
+
+  <!-- Piece authentication card -->
+  <div class="piece-auth-card">
+    <div class="piece-auth-top">
+      <span class="piece-auth-label">Registered Original</span>
+      <span class="piece-auth-badge">
+        <span class="piece-auth-dot"></span>Authenticated
+      </span>
+    </div>
+    <p class="piece-auth-number">PAC — 2026 — 003</p>
+    <p class="piece-auth-meta">Natural mineral pigments · Silk · Mewar school</p>
+    <p class="piece-auth-note">Registered in the Pacific Art catalogue. This number is unique to this painting and confirms its authenticity.</p>
+  </div>
+
+  <!-- Cert bottom: seal + registry -->
+  <div class="cert-bottom">
+
+    <svg class="seal-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="50" cy="50" r="47" stroke="#B8902A" stroke-width="0.8" opacity="0.55"/>
+      <circle cx="50" cy="50" r="40" stroke="#B8902A" stroke-width="0.4" opacity="0.3"/>
+      <g opacity="0.45" fill="#B8902A">
+        <polygon points="50,20 52,29 59,24 55,33 64,30 58,38 68,38 61,44 70,47 61,50 68,55 59,55 65,63 56,61 60,70 52,66 50,75 48,66 40,70 44,61 35,63 41,55 32,55 39,50 30,47 39,44 32,38 42,38 36,30 45,33 41,24 48,29"/>
+      </g>
+      <circle cx="50" cy="50" r="6" fill="#B8902A" opacity="0.2"/>
+      <text x="50" y="87" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="5.2" font-weight="300" letter-spacing="2" fill="#B8902A" opacity="0.5">PACIFIC ART</text>
+      <text x="50" y="94" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="3.8" font-weight="300" letter-spacing="1.2" fill="#B8902A" opacity="0.35">UDAIPUR · EST. 1952</text>
+    </svg>
+
+    <div class="cert-registry">
+      <div class="registry-row">
+        <span class="registry-label">Certificate No.</span>
+        <span id="cert-no"></span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-label">Issued</span>
+        <span class="registry-value">March 2026</span>
+        <span class="registry-sub">Udaipur, Rajasthan</span>
+      </div>
+      <div class="registry-row">
+        <span class="registry-label">Price Paid</span>
+        <span class="registry-price">₹23,800</span>
+        <span class="registry-sub">28 days · ₹850 per day</span>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ── DARK FOOTER ─────────────────────────────────────────────── -->
+<footer class="cert-footer">
+
+  <div class="footer-qr-wrap">
+    <div class="footer-qr-box">
+      <div id="footer-qrcode"></div>
+    </div>
+    <span class="footer-qr-label">Scan to read the full story<br>of how this painting was made</span>
+    <a class="footer-qr-link" href="https://devashishjose.github.io/origintag/v3/">origintag · pacific art · udaipur</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-prompt">You now own a piece of Mewar tradition.</p>
+
+  <div class="footer-meta">
+    <span class="footer-hashtag">#OriginTag</span>
+    <span class="footer-tagline-text">OriginTag &nbsp;·&nbsp; Every piece has a story. This is yours.</span>
+  </div>
+
+</footer>
 
 <script>
-  new QRCode(document.getElementById('cert-qrcode'), {
+  /* Typewriter — certificate number */
+  const certNoEl = document.getElementById('cert-no');
+  certNoEl.style.fontFamily = "'Cormorant Garamond', serif";
+  certNoEl.style.fontSize = '15px';
+  certNoEl.style.fontWeight = '300';
+  certNoEl.style.color = '#0F0E0D';
+  const certText = 'OT · 2026 · 003';
+  let i = 0;
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      certNoEl.textContent = certText.slice(0, ++i);
+      if (i >= certText.length) clearInterval(iv);
+    }, 68);
+  }, 600);
+
+  /* QR code */
+  new QRCode(document.getElementById('footer-qrcode'), {
     text: 'https://devashishjose.github.io/origintag/v3/',
-    width: 46,
-    height: 46,
+    width: 78,
+    height: 78,
     colorDark: '#0F0E0D',
     colorLight: '#FFFFFF',
     correctLevel: QRCode.CorrectLevel.M
