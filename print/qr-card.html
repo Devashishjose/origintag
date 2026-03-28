@@ -59,17 +59,19 @@
       flex: 0 0 62%;
       position: relative;
       overflow: hidden;
+      background: #1a1713;
     }
 
     .card-painting img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
+      object-fit: contain;
+      object-position: center center;
       display: block;
+      background: #1a1713;
     }
 
-    /* Gradient fade to cream at bottom */
+    /* Gradient fade to dark at bottom */
     .card-painting::after {
       content: '';
       position: absolute;
@@ -77,7 +79,7 @@
       left: 0;
       right: 0;
       height: 52px;
-      background: linear-gradient(to bottom, transparent, var(--cream));
+      background: linear-gradient(to bottom, transparent, #1a1713);
     }
 
     /* Painting title overlay — bottom left */
@@ -92,21 +94,21 @@
       font-family: var(--serif);
       font-size: 17px;
       font-weight: 300;
-      color: var(--ink);
+      color: var(--cream);
       letter-spacing: 0.03em;
       line-height: 1.2;
     }
 
     .card-painting-name em {
       font-style: italic;
-      color: var(--terra);
+      color: rgba(184,144,42,0.9);
     }
 
     .card-painting-sub {
       font-size: 7px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(15,14,13,0.42);
+      color: rgba(245,240,232,0.45);
       margin-top: 2px;
       font-weight: 300;
     }
